@@ -8,3 +8,72 @@ target:
   bronze_schema: "bronze"
   silver_schema: "silver"
   gold_schema: "gold"
+
+silver:
+  datasets:
+    pokemon:
+      source_entity: "pokemon"
+      target_table: "pokemon"
+      load_strategy: "snapshot_merge"
+      keys:
+        - pokemon_id
+
+    pokemon_types:
+      source_entity: "types"
+      target_table: "pokemon_types"
+      load_strategy: "snapshot_merge"
+      keys:
+        - pokemon_id
+        - slot
+
+    pokemon_abilities:
+      source_entity: "abilities"
+      target_table: "pokemon_abilities"
+      load_strategy: "snapshot_merge"
+      keys:
+        - pokemon_id
+        - slot
+
+    pokemon_stats:
+      source_entity: "stats"
+      target_table: "pokemon_stats"
+      load_strategy: "snapshot_merge"
+      keys:
+        - pokemon_id
+        - stat_name
+
+    pokemon_moves:
+      source_entity: "moves"
+      target_table: "pokemon_moves"
+      load_strategy: "snapshot_merge"
+      keys:
+        - pokemon_id
+        - move_name
+
+    pokemon_move_details:
+      source_entity: "move_details"
+      target_table: "pokemon_move_details"
+      load_strategy: "snapshot_merge"
+      keys:
+        - pokemon_id
+        - move_name
+        - version_group_name
+        - learn_method_name
+        - level_learned_at
+        - learn_order
+
+    pokemon_forms:
+      source_entity: "forms"
+      target_table: "pokemon_forms"
+      load_strategy: "snapshot_merge"
+      keys:
+        - pokemon_id
+        - form_name
+
+    pokemon_game_indices:
+      source_entity: "game_indices"
+      target_table: "pokemon_game_indices"
+      load_strategy: "snapshot_merge"
+      keys:
+        - pokemon_id
+        - version_name
