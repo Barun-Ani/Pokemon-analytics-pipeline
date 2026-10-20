@@ -77,3 +77,77 @@ silver:
       keys:
         - pokemon_id
         - version_name
+
+
+gold:
+  dimensions:
+    dim_pokemon:
+      source_table: pokemon
+      natural_key: [pokemon_id]
+      surrogate_key: pokemon_key
+      load_strategy: scd2
+      tracked_columns:
+        - name
+        - base_experience
+        - height
+        - weight
+        - is_default
+        - pokemon_order
+        - species_name
+        - species_url
+
+    dim_type:
+      source_table: pokemon_types
+      natural_key: [type_url]
+      surrogate_key: type_key
+      load_strategy: upsert
+      attributes: [type_name]
+
+    dim_ability:
+      source_table: pokemon_abilities
+      natural_key: [ability_url]
+      surrogate_key: ability_key
+      load_strategy: upsert
+      attributes: [ability_name]
+
+    dim_move:
+      source_table: pokemon_moves
+      natural_key: [move_url]
+      surrogate_key: move_key
+      load_strategy: upsert
+      attributes: [move_name]
+
+    dim_form:
+      source_table: pokemon_forms
+      natural_key: [form_url]
+      surrogate_key: form_key
+      load_strategy: upsert
+      attributes: [form_name]
+
+    dim_version_group:
+      source_table: pokemon_move_details
+      natural_key: [version_group_url]
+      surrogate_key: version_group_key
+      load_strategy: upsert
+      attributes: [version_group_name]
+
+    dim_learn_method:
+      source_table: pokemon_move_details
+      natural_key: [learn_method_url]
+      surrogate_key: learn_method_key
+      load_strategy: upsert
+      attributes: [learn_method_name]
+
+    dim_game_version:
+      source_table: pokemon_game_indices
+      natural_key: [version_url]
+      surrogate_key: game_version_key
+      load_strategy: upsert
+      attributes: [version_name]
+
+    dim_stat:
+      source_table: pokemon_stats
+      natural_key: [stat_url]
+      surrogate_key: stat_key
+      load_strategy: upsert
+      attributes: [stat_name]
